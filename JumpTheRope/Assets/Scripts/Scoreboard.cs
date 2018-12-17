@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Scoreboard : MonoBehaviour {
+public class Scoreboard : Components {
 
     public Text score;
     public Text highscore;
@@ -20,13 +20,10 @@ public class Scoreboard : MonoBehaviour {
 
     public void Save()
     {
-        GameManager g;
-        g = FindObjectOfType<GameManager>();
-
-        if (g.jumpsDone > PlayerPrefs.GetInt("Score"))
+        if (gm.jumpsDone > PlayerPrefs.GetInt("Score"))
         {
-            PlayerPrefs.SetInt("Score", g.jumpsDone);
-            highscore.text = "Highscore\n" + g.jumpsDone.ToString();
+            PlayerPrefs.SetInt("Score", gm.jumpsDone);
+            highscore.text = "Highscore\n" + gm.jumpsDone.ToString();
         }
     }
 

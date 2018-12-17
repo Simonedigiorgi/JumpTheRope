@@ -39,6 +39,7 @@ public class RopeController : Components {
         {
             an.speed = 0.85f;
             am.source.pitch = 1;
+            gm.jumpsDone = 0;
         }
     }
 }

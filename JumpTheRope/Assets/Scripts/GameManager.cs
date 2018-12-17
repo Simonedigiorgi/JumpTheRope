@@ -104,10 +104,6 @@ public class GameManager : Components {
 
     private IEnumerator Reset()
     {
-        am.GetComponent<AudioSource>().pitch = 1;
-        an.speed = 0.85f;
-        jumpsDone = 0;
-
         jumpsText.enabled = false;
 
         countdownText.text = "";

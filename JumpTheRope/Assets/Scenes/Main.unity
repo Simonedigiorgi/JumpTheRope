@@ -4692,7 +4692,7 @@ GameObject:
   - component: {fileID: 1281297699}
   - component: {fileID: 1281297698}
   m_Layer: 5
-  m_Name: Score
+  m_Name: Score_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4978,7 +4978,7 @@ SpriteRenderer:
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1467632668
@@ -5053,7 +5053,7 @@ SpriteRenderer:
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1493365098
@@ -5545,7 +5545,7 @@ SpriteRenderer:
   m_Size: {x: 1.5, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1574032839
@@ -5620,7 +5620,7 @@ SpriteRenderer:
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1577586262
@@ -5850,6 +5850,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72c1b11230b67f42a08bce0b7aaec7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pc: {fileID: 0}
+  an: {fileID: 0}
+  am: {fileID: 0}
+  sc: {fileID: 0}
+  gm: {fileID: 0}
   score: {fileID: 1281297699}
   highscore: {fileID: 1687200080}
   highscoreMText: {fileID: 1493365099}
@@ -6168,7 +6173,7 @@ GameObject:
   - component: {fileID: 1687200080}
   - component: {fileID: 1687200079}
   m_Layer: 5
-  m_Name: Highscore
+  m_Name: Highscore_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
