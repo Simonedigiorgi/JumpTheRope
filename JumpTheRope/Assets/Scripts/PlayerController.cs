@@ -2,31 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : Components {
 
     private Rigidbody2D rb;
-    private bool isGrounded;
+    private Animator anim;
 
-    public int jump;
-    public GameObject rope;
+    public bool isGrounded;
+    public bool isActive;
 
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
 	}
 	
 	void Update () {
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (isGrounded)
+
+        if (isActive)
+            if (Input.GetMouseButtonDown(0))
             {
-                rb.AddForce(new Vector2(0, jump));
+                if (isGrounded)
+                {
+                    rb.AddForce(new Vector2(0, 350));
+                    gm.jumpsDone++;
+                    am.PlayAudio(0);
+                }
             }
-        }
+
+        if (isGrounded)
+            anim.SetBool("isJumping", false);
+        else
+            anim.SetBool("isJumping", true);
 	}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
         }
@@ -34,21 +44,9 @@ public class PlayerController : MonoBehaviour {
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Rope"))
-        {
-            if (isGrounded)
-            {
-                Debug.Log("You Lost");
-                rope.GetComponent<Animator>().speed = 0;
-            }
         }
     }
 }
