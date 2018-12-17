@@ -26,15 +26,15 @@ public class GameManager : Components {
         jumpsText.text = "" + jumpsDone;
 
         PlayerPrefs.GetInt("Music");
-        if(PlayerPrefs.GetInt("Music") == 0)
+        if(PlayerPrefs.GetInt("Music") == 1)
             SetMusic(true, "MUSIC OFF", false);
-        else if (PlayerPrefs.GetInt("Music") == 1)
+        else if (PlayerPrefs.GetInt("Music") == 0)
             SetMusic(false, "MUSIC ON", true);
 
         PlayerPrefs.GetInt("Effects");
-        if (PlayerPrefs.GetInt("Effects") == 0)
+        if (PlayerPrefs.GetInt("Effects") == 1)
             SetEffects(true, "EFFECTS OFF", false);
-        else if (PlayerPrefs.GetInt("Effects") == 1)
+        else if (PlayerPrefs.GetInt("Effects") == 0)
             SetEffects(false, "EFFECTS ON", true);
     }
 
@@ -74,18 +74,18 @@ public class GameManager : Components {
     {
         musicToggle = !musicToggle;
         if (musicToggle == false)
-            PlayerPrefs.SetInt("Music", 0);
-        else if (musicToggle)
             PlayerPrefs.SetInt("Music", 1);
+        else if (musicToggle)
+            PlayerPrefs.SetInt("Music", 0);
     }
 
     public void EffectsToggle()
     {
         effectsToggle = !effectsToggle;
         if (effectsToggle == false)
-            PlayerPrefs.SetInt("Effects", 0);
-        else if (effectsToggle)
             PlayerPrefs.SetInt("Effects", 1);
+        else if (effectsToggle)
+            PlayerPrefs.SetInt("Effects", 0);
     }
 
     private void SetMusic(bool mute, string text, bool toggle)
