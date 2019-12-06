@@ -23,23 +23,26 @@ public class RopeController : Components {
 
     public void IncreaseSpeed()
     {
-        if (pc.isActive)
+        if (pc.isTutorial)
         {
-            if(an.speed < 3)
+            if (pc.isActive)
             {
-                an.speed = an.speed + 0.15f;
-                am.IncreasePitch();
+                if (an.speed < 3)
+                {
+                    an.speed = an.speed + 0.15f;
+                    am.IncreasePitch();
+                }
+                else
+                {
+                    an.speed = 3;
+                }
             }
             else
             {
-                an.speed = 3;
+                an.speed = 1f;
+                am.source.pitch = 1;
+                gm.jumpsDone = 0;
             }
-        }
-        else
-        {
-            an.speed = 0.85f;
-            am.source.pitch = 1;
-            gm.jumpsDone = 0;
         }
     }
 }

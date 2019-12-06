@@ -8,19 +8,30 @@ public class CollisionController : Components {
     {
         if (collision.gameObject.name == "Rope")
         {
-            if (pc.isGrounded)
+            if (pc.isTutorial)
             {
-                an.SetBool("Move", false);
+                if (pc.isGrounded)
+                {
+                    an.SetBool("Move", false);
 
-                pc.isActive = false;
-                gm.endMenu.SetActive(true);
+                    pc.isActive = false;
+                    gm.endMenu.SetActive(true);
 
+                    //gm.tutorialText.enabled = true;
+
+                    am.PlayAudio(1);
+
+                    sc.score.text = "Score\n" + gm.jumpsDone;
+                    sc.Save();
+
+                    pc.canJump = false;
+                }
+            }
+            else
+            {
+                an.speed = 0;
                 gm.tutorialText.enabled = true;
-
-                am.PlayAudio(1);
-
-                sc.score.text = "Score\n" + gm.jumpsDone;
-                sc.Save();
+                pc.canJump = true;
             }
         }
     }

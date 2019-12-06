@@ -9,8 +9,11 @@ public class PlayerController : Components {
 
     public bool isGrounded;
     public bool isActive;
+    public bool canJump;
 
-	void Start () {
+    [HideInInspector] public bool isTutorial;
+
+    void Start () {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 	}
@@ -20,11 +23,19 @@ public class PlayerController : Components {
         if (isActive)
             if (Input.GetMouseButtonDown(0))
             {
-                if (isGrounded)
+                if (isGrounded && canJump)
                 {
                     rb.AddForce(new Vector2(0, 350));
                     gm.jumpsDone++;
                     am.PlayAudio(0);
+
+                    if (!isTutorial)
+                    {
+                        isTutorial = true;
+                        gm.tutorialText.enabled = false;
+                        an.speed = 1;
+                        canJump = true;
+                    }
                 }
             }
 

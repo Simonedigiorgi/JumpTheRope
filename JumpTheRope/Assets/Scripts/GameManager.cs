@@ -16,6 +16,7 @@ public class GameManager : Components {
     public Text musicText;
     public Text effectsText;
     public Text tutorialText;
+    public Text speedText;
 
     void Start () {
         startMenu.SetActive(true);
@@ -104,10 +105,17 @@ public class GameManager : Components {
 
     private IEnumerator Reset()
     {
+        speedText.enabled = false;
+        an.speed = 1f;
+        am.source.pitch = 1;
+        gm.jumpsDone = 0;
+
+        pc.isTutorial = false;
+        
         jumpsText.enabled = false;
 
-        countdownText.text = "";
-        yield return new WaitForSeconds(2);
+        /*countdownText.text = "";
+        yield return new WaitForSeconds(2);*/
 
         countdownText.text = "3";
         yield return new WaitForSeconds(1);
@@ -127,6 +135,7 @@ public class GameManager : Components {
 
         yield return new WaitForSeconds(2);
         countdownText.text = "";
+        speedText.enabled = true;
     }
 
     public IEnumerator StartTheGame()
@@ -135,11 +144,11 @@ public class GameManager : Components {
         b = startMenu.transform.GetChild(1).GetComponent<Button>();
 
         b.interactable = false;
-        yield return new WaitForSeconds(3);
         startMenu.SetActive(false);
         b.interactable = true;
         am.musicSource.Play();
 
         StartCoroutine(Reset());
+        yield return null;
     }
 }
